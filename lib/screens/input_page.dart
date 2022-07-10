@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:project2/constants.dart';
-import 'package:project2/screens/result_page.dart';
+import 'package:project2/screens/results_page.dart';
 import 'package:project2/components/icon_content.dart';
 import 'package:project2/components/button_button.dart';
 import 'package:project2/components/reusable_card.dart';
 import 'package:project2/components/round_icon_button.dart';
+import 'package:project2/calculator_brain.dart';
 
 enum Gender {
   male,
@@ -211,10 +212,15 @@ class _InputPageState extends State<InputPage> {
           ButtomButton(
             buttonTitle: 'CALCULATE',
             onTap: () {
+              CalculatorBrain calculate = CalculatorBrain(height: height, weight: weight);
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ResultsPage(),
+                  builder: (context) => ResultsPage(
+                      bmiResult: calculate.calculateBMI(),
+                      resultText: calculate.getResult(),
+                      interpretation: calculate.getInterpretation(),
+                  ),
                 ),
               );
             },

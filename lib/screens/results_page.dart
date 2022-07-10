@@ -4,11 +4,20 @@ import 'package:project2/constants.dart';
 import 'package:project2/components/button_button.dart';
 
 class ResultsPage extends StatelessWidget {
+  ResultsPage(
+      {required this.bmiResult,
+      required this.resultText,
+      required this.interpretation});
+
+  final String bmiResult;
+  final String resultText;
+  final String interpretation;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('BMI CALCULATOR'),
+        title: const Text('BMI CALCULATOR'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -31,17 +40,17 @@ class ResultsPage extends StatelessWidget {
               cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
-                children: const <Widget>[
+                children: <Widget>[
                   Text(
-                    'Normal',
+                    resultText.toUpperCase(),
                     style: kResultTextStyle,
                   ),
                   Text(
-                    '18.3',
+                    bmiResult,
                     style: kBMITextStyle,
                   ),
                   Text(
-                    'Your BMI result is quite low, you should eat more!',
+                    interpretation,
                     style: kBodyTextStyle,
                     textAlign: TextAlign.center,
                   )
@@ -51,12 +60,7 @@ class ResultsPage extends StatelessWidget {
           ),
           ButtomButton(
               onTap: () {
-                Navigator.pop(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ResultsPage(),
-                  ),
-                );
+                Navigator.pop(context);
               },
               buttonTitle: 'RE-CALCULATE')
         ],
