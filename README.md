@@ -1,4 +1,4 @@
-# project2
+# project2 - BMI Calculator
 
 A new Flutter project.
 
