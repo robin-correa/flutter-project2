@@ -14,10 +14,14 @@ class ResultsPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          const Expanded(
-            child: Text(
-              'Your Result',
-              style: kTitleTextStyle,
+          Expanded(
+            child: Container(
+              padding: EdgeInsets.all(15.0),
+              alignment: Alignment.bottomLeft,
+              child: const Text(
+                'Your Result',
+                style: kTitleTextStyle,
+              ),
             ),
           ),
           Expanded(
